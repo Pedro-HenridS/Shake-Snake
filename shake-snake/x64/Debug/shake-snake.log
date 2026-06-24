@@ -2,5 +2,9 @@
 C:\Users\pedro\source\repos\shake-snake\Main.c(18,19): warning C4244: 'inicializando': conversão de 'ULONGLONG' para 'DWORD', possível perda de dados
 C:\Users\pedro\source\repos\shake-snake\Main.c(23,15): warning C4244: 'inicializando': conversão de 'ULONGLONG' para 'DWORD', possível perda de dados
 C:\Users\pedro\source\repos\shake-snake\Main.c(35,18): warning C4244: 'inicializando': conversão de 'ULONGLONG' para 'DWORD', possível perda de dados
+  map.c
+C:\Users\pedro\source\repos\shake-snake\map.c(77,8): warning C4244: 'função': conversão de 'time_t' para 'unsigned int', possível perda de dados
+C:\Users\pedro\source\repos\shake-snake\map.c(127,2): warning C4047: 'return': 'Map *' difere em níveis de indireção de 'char **'
+  Gerando Código...
   shake-snake.vcxproj -> C:\Users\pedro\source\repos\shake-snake\x64\Debug\shake-snake.exe
   C:\Users\pedro\source\repos\shake-snake\x64\Debug\shake-snake.exe: message: implantando dependências

@@ -11,9 +11,9 @@
 int main() {
 
 	Snake* snake = create_snake();
-	char** map = create_map(snake);
+	Map* map = create_map(snake);
 
-	print_map(map, snake);
+	print_map(map->map, snake);
 
 	DWORD lastTick = GetTickCount64();
 
@@ -26,8 +26,8 @@ int main() {
 			system("cls");
 
 			move_one(snake);
-			char** map = create_map(snake);
-			print_map(map, snake);
+			Map* map = create_map(snake);
+			print_map(map->map, snake);
 
 			lastTick = now;
 		}

@@ -72,35 +72,45 @@ int has_conflited(char** map, Snake* snake, int a_x, int a_y) {
 }
 
 
-void populate_map(char** map, Snake* snake) {
+void populate_map(Map* map_struct, Snake* snake) {
 
 	srand(time(NULL));
 
 	int apple_row = rand() % 7;
 	int apple_column = rand() % 7;
 
-	while (has_conflited(map, snake, apple_row, apple_column) == 1) {
+	while (has_conflited(map_struct->map, snake, apple_row, apple_column) == 1) {
 		int apple_row = rand() % 7;
 		int apple_column = rand() % 7;
 	}
 
 	for (int i = 0; i < COLUMN_LENGHT; i++) {
 		for (int j = 0; j < ROW_LENGHT; j++) {
-			map[i][j] = '.';
+			map_struct->map[i][j] = '.';
 		}
 	}
 
-	set_snake_on_map(map, snake);
-	//map[apple_row][apple_column] = '#';
+	set_snake_on_map(map_struct->map, snake);
+	map_struct->map[apple_row][apple_column] = '#';
+	map_struct->apple_x = apple_row;
+	map_struct->apple_y = apple_column;
 }
 
-char** create_map(Snake* snake) {
+Map* create_map(Snake* snake) {
 	
+	Map* map_struct = calloc(1, sizeof(Map));
+
+	if (map_struct == NULL) {
+		return NULL;
+	}
+
 	char** map = calloc(COLUMN_LENGHT, sizeof(char*));
 
 	if (map == NULL) {
 		return NULL;
 	}
+
+	map_struct->map = map;
 
 	for (int i = 0; i < COLUMN_LENGHT; i++) {
 		char* vetor = create_vetor();
@@ -112,7 +122,7 @@ char** create_map(Snake* snake) {
 		map[i] = vetor;
 	}
 
-	populate_map(map, snake);
+	populate_map(map_struct, snake);
 
 	return map;
 }

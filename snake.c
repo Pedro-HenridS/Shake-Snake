@@ -3,7 +3,7 @@
 
 #include "snake.h"
 
-SnakeNode* create_snakenode(SnakeNode* previous) {
+SnakeNode* create_snakenode() {
 
 	SnakeNode* node = malloc(sizeof(SnakeNode));
 
@@ -14,7 +14,7 @@ SnakeNode* create_snakenode(SnakeNode* previous) {
 	node->x = NULL;
 	node->y = NULL;
 	node->next = NULL;
-	node->previous = previous;
+	node->previous = NULL;
 
 	return node;
 };
@@ -37,6 +37,9 @@ Snake* create_snake() {
 
 	snake->head = head;
 	snake->lenght = 0;
+	snake->tail = snake->head;
+	snake->last_node_x = 0;
+	snake->last_node_y = 0;
 	snake->direction = RIGHT;
 
 	return snake;
@@ -71,5 +74,27 @@ void* move_one(Snake* snake) {
 		break;
 	}
 
+	snake->last_node_x = snake->tail->x;
+	snake->last_node_y = snake->tail->y;
+
 	return NULL;
+}
+
+Snake* snake_growth(Snake* snake, int x, int y) {
+	SnakeNode* new_node = create_snakenode();
+	SnakeNode* last_node = snake->tail;
+
+	if (new_node == NULL) {
+		return;
+	}
+
+	new_node->next = NULL;
+	new_node->previous = snake->tail;
+	snake->tail = new_node;
+
+	snake->last_node_x = snake->tail->x;
+	snake->last_node_y = snake->tail->y;
+
+	snake->lenght++;
+
 }
