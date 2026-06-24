@@ -139,11 +139,15 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="keyboard.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="map.c" />
+    <ClCompile Include="snake.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="keyboard.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

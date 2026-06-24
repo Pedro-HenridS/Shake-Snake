@@ -1,20 +1,39 @@
 #include <stdio.h>
 #include <windows.h>
+#include <conio.h>
+
 #include "map.h"
+#include "snake.h"
+#include "keyboard.h"
+
+#define TICK 200
 
 int main() {
-	char** map = create_map();
-	print_map(map);
+
+	Snake* snake = create_snake();
+	char** map = create_map(snake);
+
+	print_map(map, snake);
+
+	DWORD lastTick = GetTickCount64();
 
 	while (1) {
-		printf("\033[2J");
+		detect_key(snake);
 
-		char** map = create_map();
-		print_map(map);
+		DWORD now = GetTickCount64();
 
-		Sleep(1000);
+		if (now - lastTick >= TICK) {
+			system("cls");
 
-		printf("\033[H");
+			move_one(snake);
+			char** map = create_map(snake);
+			print_map(map, snake);
+
+			lastTick = now;
+		}
+
+		DWORD nowNow = GetTickCount64();
+		Sleep(1);
 	}
 
 	return 0;

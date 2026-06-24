@@ -1,7 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
 
-void print_map(char** map);
-char** create_map();
+#include "snake.h"
 
-#endif 
+void print_map(char** map, Snake* snake);
+char** create_map(Snake* snake);
+
+#endif
