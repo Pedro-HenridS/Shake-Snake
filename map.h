@@ -1,8 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include "snake.h"
-#include "stats.h"
+typedef struct Snake Snake;
+typedef struct Stats Stats;
 
 typedef struct Map {
 	char** map;
@@ -10,6 +10,5 @@ typedef struct Map {
 
 void print_map(char** map, Snake* snake);
 Map* create_map(Snake* snake, Stats* stats);
-void generate_apple(Map* map, Snake* snake, Stats* stats);
 
 #endif

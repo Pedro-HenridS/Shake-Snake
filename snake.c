@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "snake.h"
+#include "stats.h"
 
 SnakeNode* create_snakenode() {
 
@@ -46,7 +47,26 @@ Snake* create_snake() {
 	return snake;
 };
 
-void* move_one(Snake* snake) {
+Snake* snake_growth(Snake* snake, int x, int y) {
+	SnakeNode* new_node = create_snakenode();
+	SnakeNode* last_node = snake->tail;
+
+	if (new_node == NULL) {
+		return;
+	}
+
+	new_node->next = NULL;
+	new_node->previous = snake->tail;
+	snake->tail = new_node;
+
+	snake->last_node_x = snake->tail->x;
+	snake->last_node_y = snake->tail->y;
+
+	snake->lenght++;
+
+}
+
+void* move_one(Map* map, Snake* snake, Stats* stats) {
 	SnakeNode* snake_node = snake->head;
 
 	switch (snake->direction) {
@@ -75,29 +95,17 @@ void* move_one(Snake* snake) {
 		break;
 	}
 
-
-
 	snake->last_node_x = snake->tail->x;
 	snake->last_node_y = snake->tail->y;
+
+	if (snake->head->x == stats->apple_x && snake->head->y == stats->apple_y) {
+		/*printf("COMEU COMEU COMEU COMEU COMEU COMEU COMEU COMEU");*/
+		snake_growth(snake, snake->last_node_x, snake->last_node_y);
+		snake->eaten_apples++;
+		generate_apple(map, snake, stats);
+	}
 
 	return NULL;
 }
 
-Snake* snake_growth(Snake* snake, int x, int y) {
-	SnakeNode* new_node = create_snakenode();
-	SnakeNode* last_node = snake->tail;
 
-	if (new_node == NULL) {
-		return;
-	}
-
-	new_node->next = NULL;
-	new_node->previous = snake->tail;
-	snake->tail = new_node;
-
-	snake->last_node_x = snake->tail->x;
-	snake->last_node_y = snake->tail->y;
-
-	snake->lenght++;
-
-}

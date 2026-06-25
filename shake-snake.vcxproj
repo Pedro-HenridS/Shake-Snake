@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="map_utilities.h" />
     <ClInclude Include="snake.h" />
     <ClInclude Include="stats.h" />
   </ItemGroup>

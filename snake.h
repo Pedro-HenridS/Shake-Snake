@@ -1,5 +1,7 @@
+#pragma once
 #ifndef SNAKE_H
 #define SNAKE_H
+#include "stats.h"
 
 typedef enum Directions {
 	UP,
@@ -32,7 +34,7 @@ SnakeNode* create_snakenode();
 
 Snake* create_snake();
 
-void* move_one(Snake* snake);
+void* move_one(Map* map, Snake* snake, Stats* stats);
 
 Snake* snake_growth(Snake* snake, int x, int y);
 

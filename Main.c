@@ -7,7 +7,7 @@
 #include "keyboard.h"
 #include "stats.h"
 
-#define TICK 200
+#define TICK 400
 
 int main() {
 
@@ -27,7 +27,7 @@ int main() {
 		if (now - lastTick >= TICK) {
 			system("cls");
 
-			move_one(snake);
+			move_one(map, snake, stats);
 			Map* map = create_map(snake, stats);
 			print_map(map->map, snake);
 
@@ -35,7 +35,7 @@ int main() {
 		}
 
 		DWORD nowNow = GetTickCount64();
-		Sleep(1);
+		Sleep(10);
 	}
 
 	return 0;
