@@ -5,13 +5,15 @@
 #include "map.h"
 #include "snake.h"
 #include "keyboard.h"
+#include "stats.h"
 
 #define TICK 200
 
 int main() {
 
 	Snake* snake = create_snake();
-	Map* map = create_map(snake);
+	Stats* stats = create_stats();
+	Map* map = create_map(snake, stats);
 
 	print_map(map->map, snake);
 
@@ -26,7 +28,7 @@ int main() {
 			system("cls");
 
 			move_one(snake);
-			Map* map = create_map(snake);
+			Map* map = create_map(snake, stats);
 			print_map(map->map, snake);
 
 			lastTick = now;

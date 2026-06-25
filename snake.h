@@ -24,6 +24,7 @@ typedef struct Snake {
 	int last_node_x;
 	int last_node_y;
 	int lenght;
+	int eaten_apples;
 
 } Snake;
 

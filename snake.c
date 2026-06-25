@@ -41,6 +41,7 @@ Snake* create_snake() {
 	snake->last_node_x = 0;
 	snake->last_node_y = 0;
 	snake->direction = RIGHT;
+	snake->eaten_apples = 0;
 
 	return snake;
 };
@@ -73,6 +74,8 @@ void* move_one(Snake* snake) {
 		}
 		break;
 	}
+
+
 
 	snake->last_node_x = snake->tail->x;
 	snake->last_node_y = snake->tail->y;
