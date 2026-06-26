@@ -146,6 +146,8 @@
     <ClCompile Include="stats.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="game_options.h" />
+    <ClInclude Include="global_stats.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="map_utilities.h" />

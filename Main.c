@@ -12,7 +12,7 @@
 int main() {
 
 	Snake* snake = create_snake();
-	Stats* stats = create_stats();
+	GameStats* stats = create_stats();
 	Map* map = create_map(snake, stats);
 
 	print_map(map->map, snake);

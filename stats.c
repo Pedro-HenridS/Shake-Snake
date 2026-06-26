@@ -5,7 +5,7 @@
 #include "map.h"
 #include "snake.h"
 
-void generate_apple(Map* map_struct, Snake* snake, Stats* stats) {
+void generate_apple(Map* map_struct, Snake* snake, GameStats* stats) {
 	if (stats->generated_apple == snake->eaten_apples) {
 		srand(time(NULL));
 
@@ -30,9 +30,8 @@ void generate_apple(Map* map_struct, Snake* snake, Stats* stats) {
 	}
 }
 
-
-Stats* create_stats() {
-	Stats* stats = calloc(1, sizeof(Stats));
+GameStats* create_stats() {
+	GameStats* stats = calloc(1, sizeof(GameStats));
 
 	if (stats == NULL) {
 		return NULL;

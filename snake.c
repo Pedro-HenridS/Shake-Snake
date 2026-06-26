@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "snake.h"
+#include "map.h"
 #include "stats.h"
 
 SnakeNode* create_snakenode() {
@@ -77,7 +78,7 @@ int crossed_border(Snake* snake, int c_x, int c_y) {
 	return 0;
 }
 
-void* move_one(Map* map, Snake* snake, Stats* stats) {
+void* move_one(Map* map, Snake* snake, GameStats* stats) {
 	SnakeNode* snake_node = snake->head;
 	int previous_x = snake->head->x;
 	int previous_y = snake->head->y;
