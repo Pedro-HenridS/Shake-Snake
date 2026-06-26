@@ -12,8 +12,8 @@ SnakeNode* create_snakenode() {
 		return NULL;
 	}
 
-	node->x = NULL;
-	node->y = NULL;
+	node->x = 0;
+	node->y = 0;
 	node->next = NULL;
 	node->previous = NULL;
 
@@ -27,14 +27,14 @@ Snake* create_snake() {
 		return NULL;
 	}
 
-	SnakeNode* head = create_snakenode(NULL);
-
-	head->x = 0;
-	head->y = 0;
+	SnakeNode* head = create_snakenode();
 
 	if (head == NULL) {
 		return NULL;
 	}
+
+	head->x = 0;
+	head->y = 0;
 
 	snake->head = head;
 	snake->lenght = 0;
@@ -49,59 +49,80 @@ Snake* create_snake() {
 
 Snake* snake_growth(Snake* snake, int x, int y) {
 	SnakeNode* new_node = create_snakenode();
-	SnakeNode* last_node = snake->tail;
 
 	if (new_node == NULL) {
-		return;
+		return snake;
 	}
 
+	new_node->x = x;
+	new_node->y = y;
 	new_node->next = NULL;
 	new_node->previous = snake->tail;
+	snake->tail->next = new_node;
 	snake->tail = new_node;
-
-	snake->last_node_x = snake->tail->x;
-	snake->last_node_y = snake->tail->y;
 
 	snake->lenght++;
 
+	return snake;
 }
 
 void* move_one(Map* map, Snake* snake, Stats* stats) {
 	SnakeNode* snake_node = snake->head;
+	int previous_x = snake->head->x;
+	int previous_y = snake->head->y;
+	int moved = 0;
 
 	switch (snake->direction) {
 	case UP:
 		if (snake_node->x > 0) {
 			snake->head->x--;
+			moved = 1;
 		}
 		break;
 
 	case DOWN:
 		if (snake_node->x < 6) {
 			snake->head->x++;
+			moved = 1;
 		}
 		break;
 
 	case LEFT:
 		if (snake_node->y > 0) {
 			snake->head->y--;
+			moved = 1;
 		}
 		break;
 
 	case RIGHT:
 		if (snake_node->y < 6) {
 			snake->head->y++;
+			moved = 1;
 		}
 		break;
 	}
 
-	snake->last_node_x = snake->tail->x;
-	snake->last_node_y = snake->tail->y;
+	if (!moved) {
+		return NULL;
+	}
+
+	for (snake_node = snake->head->next; snake_node != NULL; snake_node = snake_node->next) {
+		int current_x = snake_node->x;
+		int current_y = snake_node->y;
+
+		snake_node->x = previous_x;
+		snake_node->y = previous_y;
+
+		previous_x = current_x;
+		previous_y = current_y;
+	}
+
+	snake->last_node_x = previous_x;
+	snake->last_node_y = previous_y;
 
 	if (snake->head->x == stats->apple_x && snake->head->y == stats->apple_y) {
-		/*printf("COMEU COMEU COMEU COMEU COMEU COMEU COMEU COMEU");*/
-		snake_growth(snake, snake->last_node_x, snake->last_node_y);
 		snake->eaten_apples++;
+		snake_growth(snake, snake->last_node_x, snake->last_node_y);
 		generate_apple(map, snake, stats);
 	}
 

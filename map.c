@@ -11,20 +11,15 @@
 
 void set_snake_on_map(char** map, Snake* snake) {
 
-	SnakeNode* snake_node = snake->head;
+	int is_head = 1;
 
-	for (int c = 0; snake_node != NULL; c++) {
-		int column = snake_node->x;
-		int row = snake_node->y;
+	for (SnakeNode* sn = snake->head; sn != NULL; sn = sn->next) {
+		int column = sn->x;
+		int row = sn->y;
 
-		if (c == 0) {
-			map[column][row] = '@';
-		}
-		else {
-			map[column][row] = '0';
-		}
+		map[column][row] = is_head ? '@' : '0';
 
-		snake_node = snake_node->next;
+		is_head = 0;
 	}
 }
 

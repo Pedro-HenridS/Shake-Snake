@@ -13,8 +13,8 @@ void generate_apple(Map* map_struct, Snake* snake, Stats* stats) {
 		int apple_column = rand() % 7;
 
 		while (has_conflited(map_struct->map, snake, apple_row, apple_column) == 1) {
-			int apple_row = rand() % 7;
-			int apple_column = rand() % 7;
+			apple_row = rand() % 7;
+			apple_column = rand() % 7;
 		}
 
 
