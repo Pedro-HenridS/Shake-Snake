@@ -1,3 +1,6 @@
-﻿  map.c
+﻿  Main.c
+C:\Users\pedro\source\repos\shake-snake\Main.c(20,19): warning C4244: 'inicializando': conversão de 'ULONGLONG' para 'DWORD', possível perda de dados
+C:\Users\pedro\source\repos\shake-snake\Main.c(25,15): warning C4244: 'inicializando': conversão de 'ULONGLONG' para 'DWORD', possível perda de dados
+C:\Users\pedro\source\repos\shake-snake\Main.c(42,18): warning C4244: 'inicializando': conversão de 'ULONGLONG' para 'DWORD', possível perda de dados
   shake-snake.vcxproj -> C:\Users\pedro\source\repos\shake-snake\x64\Debug\shake-snake.exe
   C:\Users\pedro\source\repos\shake-snake\x64\Debug\shake-snake.exe: message: implantando dependências

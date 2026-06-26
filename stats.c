@@ -39,6 +39,7 @@ Stats* create_stats() {
 	}
 
 	stats->generated_apple = 0;
+	stats->ended = 0;
 
 	return stats;
 }

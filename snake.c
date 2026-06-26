@@ -66,6 +66,17 @@ Snake* snake_growth(Snake* snake, int x, int y) {
 	return snake;
 }
 
+int crossed_border(Snake* snake, int c_x, int c_y) {
+
+	for (SnakeNode* snake_node = snake->head->next; snake_node != NULL; snake_node = snake_node->next) {
+		if (snake_node->x == c_x && snake_node->y == c_y) {
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
 void* move_one(Map* map, Snake* snake, Stats* stats) {
 	SnakeNode* snake_node = snake->head;
 	int previous_x = snake->head->x;
@@ -75,30 +86,69 @@ void* move_one(Map* map, Snake* snake, Stats* stats) {
 	switch (snake->direction) {
 	case UP:
 		if (snake_node->x > 0) {
+
+			if (crossed_border(snake, snake->head->x-1, snake->head->y) == 1) {
+				stats->ended = 1;
+				return;
+			}
 			snake->head->x--;
 			moved = 1;
+		}
+		else {
+			stats->ended = 1;
+			return;
 		}
 		break;
 
 	case DOWN:
 		if (snake_node->x < 6) {
+
+			if (crossed_border(snake, snake->head->x + 1, snake->head->y) == 1) {
+				stats->ended = 1;
+				return;
+			}
+
 			snake->head->x++;
 			moved = 1;
 		}
+		else {
+			stats->ended = 1;
+			return;
+		}
+
 		break;
 
 	case LEFT:
 		if (snake_node->y > 0) {
+			if (crossed_border(snake, snake->head->x, snake->head->y - 1) == 1) {
+				stats->ended = 1;
+				return;
+			}
+
 			snake->head->y--;
 			moved = 1;
 		}
+		else {
+			stats->ended = 1;
+			return;
+		}
+
 		break;
 
 	case RIGHT:
 		if (snake_node->y < 6) {
+			if (crossed_border(snake, snake->head->x, snake->head->y+1) == 1) {
+				stats->ended = 1;
+				return;
+			}
 			snake->head->y++;
 			moved = 1;
 		}
+		else {
+			stats->ended = 1;
+			return;
+		}
+
 		break;
 	}
 

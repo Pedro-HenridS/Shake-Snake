@@ -9,6 +9,7 @@ typedef struct Stats {
 	int generated_apple;
 	int apple_x; 
 	int apple_y;
+	int ended;
 } Stats;
 
 void generate_apple(Map* map_struct, Snake* snake, Stats* stats);

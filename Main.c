@@ -7,7 +7,7 @@
 #include "keyboard.h"
 #include "stats.h"
 
-#define TICK 400
+#define TICK 500
 
 int main() {
 
@@ -19,7 +19,7 @@ int main() {
 
 	DWORD lastTick = GetTickCount64();
 
-	while (1) {
+	while (stats->ended == 0) {
 		detect_key(snake);
 
 		DWORD now = GetTickCount64();
@@ -28,6 +28,11 @@ int main() {
 			system("cls");
 
 			move_one(map, snake, stats);
+
+			if (stats->ended == 1) {
+				break;
+			}
+
 			Map* map = create_map(snake, stats);
 			print_map(map->map, snake);
 
@@ -37,6 +42,9 @@ int main() {
 		DWORD nowNow = GetTickCount64();
 		Sleep(10);
 	}
+
+	printf("[ GAME OVER ]");
+	Sleep(1000000000);
 
 	return 0;
 }
