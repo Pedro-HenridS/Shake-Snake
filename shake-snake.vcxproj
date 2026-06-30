@@ -139,10 +139,12 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="game_options.c" />
     <ClCompile Include="global_stats.c" />
     <ClCompile Include="keyboard.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="map.c" />
+    <ClCompile Include="Match.c" />
     <ClCompile Include="snake.c" />
     <ClCompile Include="stats.c" />
   </ItemGroup>
@@ -152,8 +154,12 @@
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="map_utilities.h" />
+    <ClInclude Include="Match.h" />
     <ClInclude Include="snake.h" />
     <ClInclude Include="stats.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

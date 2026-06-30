@@ -13,4 +13,6 @@ void generate_apple(struct Map* map_struct, struct Snake* snake, MatchStats* sta
 
 MatchStats* create_stats();
 
+void show_match_stats();
+
 #endif

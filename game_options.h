@@ -3,7 +3,9 @@
 #ifndef GAME_OPTIONS
 #define GAME_OPTIONS
 
-void* init_game();
+#include "Match.h"
+
+void* init_game(MatchHistList* hist_list);
 void* game_menu();
 
 #endif 
