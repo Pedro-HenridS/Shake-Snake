@@ -36,3 +36,22 @@ void detect_key(Snake* snake) {
 		}
 	}
 }
+int detect_enter() {
+	if (_kbhit()) {
+		int key = _getch();
+
+		if (key == 0 || key == 224) {
+			key = _getch();
+		}
+
+		switch (key) {
+		case 13:
+			return 1;
+			break;
+		
+		default:
+			return 0;
+			break;
+		}
+	}
+}

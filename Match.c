@@ -58,7 +58,7 @@ void add_hist(MatchHistList* match_hist_list, MatchHist* match_hist) {
 
 void results_header(int counter) {
 	printf("======================\n");
-	printf("%dº HISTÓRICO \n", counter);
+	printf("%d. HISTORICO \n", counter);
 	printf("======================\n");
 }
 

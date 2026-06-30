@@ -42,7 +42,3 @@ MatchStats* create_stats() {
 
 	return stats;
 }
-
-void show_match_stats() {
-
-}

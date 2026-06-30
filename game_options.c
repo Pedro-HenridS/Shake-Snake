@@ -74,9 +74,13 @@ void* game_menu() {
 			void* result = init_game(hist_list);
 		}
 		if (opt == 2) {
-			
 			show_hist(hist_list);
 
+			int enter_pressed = 0;
+
+			while (enter_pressed != 1) {
+				enter_pressed = detect_enter();
+			}
 		}
 		if(opt==3) {
 			break;

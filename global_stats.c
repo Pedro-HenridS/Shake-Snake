@@ -9,6 +9,4 @@ GlobalStats* create_global_stats() {
 	if (global_stats == NULL) {
 		return NULL;
 	}
-
-	
 };
