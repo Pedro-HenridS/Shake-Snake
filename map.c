@@ -67,7 +67,7 @@ int has_conflited(char** map, Snake* snake, int a_x, int a_y) {
 	return 0;
 }
 
-void populate_map(Map* map_struct, Snake* snake, GameStats* stats) {
+void populate_map(Map* map_struct, Snake* snake, MatchStats* stats) {
 
 	for (int i = 0; i < COLUMN_LENGHT; i++) {
 		for (int j = 0; j < ROW_LENGHT; j++) {
@@ -80,7 +80,7 @@ void populate_map(Map* map_struct, Snake* snake, GameStats* stats) {
 	set_snake_on_map(map_struct->map, snake);
 }
 
-Map* create_map(Snake* snake, GameStats* stats) {
+Map* create_map(Snake* snake, MatchStats* stats) {
 	
 	Map* map_struct = calloc(1, sizeof(Map));
 

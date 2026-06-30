@@ -1,5 +1,30 @@
-﻿.vs/
-bin/
-obj/
+﻿# Build output - Visual Studio C/C++
+x64/
+Debug/
+Release/
+
+# Object files
+*.obj
+*.o
+
+# Executables
+*.exe
+
+# Debug symbols
+*.pdb
+*.idb
+
+# Incremental linker files
+*.ilk
+
+# Build logs
+*.log
+*.tlog
+*.lastbuildstate
+
+# Visual Studio user/cache files
+.vs/
 *.user
 *.suo
+*.VC.db
+*.VC.VC.opendb

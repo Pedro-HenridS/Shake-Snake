@@ -2,15 +2,15 @@
 #ifndef  STATS_H
 #define STATS_H
 
-typedef struct GameStats {
+typedef struct MatchStats {
 	int generated_apple;
 	int apple_x; 
 	int apple_y;
 	int ended;
-} GameStats;
+} MatchStats;
 
-void generate_apple(struct Map* map_struct, struct Snake* snake, GameStats* stats);
+void generate_apple(struct Map* map_struct, struct Snake* snake, MatchStats* stats);
 
-GameStats* create_stats();
+MatchStats* create_stats();
 
 #endif

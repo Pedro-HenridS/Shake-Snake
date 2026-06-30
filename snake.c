@@ -78,7 +78,7 @@ int crossed_border(Snake* snake, int c_x, int c_y) {
 	return 0;
 }
 
-void* move_one(Map* map, Snake* snake, GameStats* stats) {
+void* move_one(Map* map, Snake* snake, MatchStats* stats) {
 	SnakeNode* snake_node = snake->head;
 	int previous_x = snake->head->x;
 	int previous_y = snake->head->y;

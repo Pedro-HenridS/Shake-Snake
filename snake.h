@@ -33,7 +33,7 @@ SnakeNode* create_snakenode();
 
 Snake* create_snake();
 
-void* move_one(struct Map* map, Snake* snake, struct GameStats* stats);
+void* move_one(struct Map* map, Snake* snake, struct MatchStats* stats);
 
 Snake* snake_growth(Snake* snake, int x, int y);
 
